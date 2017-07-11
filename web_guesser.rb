@@ -1,4 +1,7 @@
 require 'sinatra'
+require 'sinatra/reloader'
+
 get '/' do
-  "Hello, World!"
+  c=rand(101)
+  "HELLO WORLD! no is #{c}"
 end

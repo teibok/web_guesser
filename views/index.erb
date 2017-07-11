@@ -3,23 +3,39 @@
   <head></head>
   <body>
     <p>
-      <% if user_guess.to_i>(NUMBER+3)%>
+      <% if user_guess.to_i>(@@number+3)%>
+      <style>body {
+        background-color: red;
+        }</style>
       The number is too high
       <br>
-      <% elsif user_guess.to_i<(NUMBER-3)%>
+      <% elsif user_guess.to_i<(@@number-3)%>
+      <style>body {
+        background-color: teal;
+        }</style>
       The number is too low<br>
       <% end %>
-      <% if user_guess.to_i==NUMBER%>
+      <% if user_guess.to_i==@@number%>
       Correct! congrats
-      <br>The secret number is <%= NUMBER%>
+      <br>The secret number is <%=@@number%><% new_game %>
       <% else %>
       Incorrect!<br>
       <%end%>
     </p>
     <form>
+      <style>#cheat_code{display:none;}</style>
       <input type='text' name='guess' />
       <input type='submit' value='Guess!' />
+      <input  id="cheat_code"type='text' name='cheat'/>
     </form>
-    The secret number is <%= NUMBER%>
+    <% if @@counter==0 %>
+    You are out of guesses!<br>
+    <% new_game %>
+    <% else %>
+    <% @@counter-=1 %>
+    <% end %>
+    <% if cheat=='true' %>
+    The secret number(cheat) is <%=@@number %>
+    <%end%>
   </body>
 </html>

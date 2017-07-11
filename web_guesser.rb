@@ -2,6 +2,7 @@ require 'sinatra'
 require 'sinatra/reloader'
 
 get '/' do
-  number=rand(1001)
-  erb :index, :locals => {:number => number}
+  NUMBER=rand(10)
+  user_guess=params["guess"]
+  erb :index, :locals => {:user_guess => user_guess}
 end
